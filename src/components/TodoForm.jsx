@@ -1,12 +1,18 @@
 import React, {useState} from 'react'
+import { nanoid } from 'nanoid';
 
-function TodoForm() {
+function TodoForm(props) {
   //стейт для инпута
   const [input, setInput] = useState('');
 
   //колбэк при клике на кнопку
   const handleClick = e => {
     e.preventDefault();
+    
+    props.onSubmit({
+      id: nanoid(5),
+      text: input,
+    })
     setInput('');
   }
 
