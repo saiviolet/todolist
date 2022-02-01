@@ -23,8 +23,15 @@ function TodoForm() {
         name="input-text"
         className={input}
         placeholder="Напишите задачу"
+        onChange={handleChange}
+        pattern="[a-zA-Z0-9]+"
+        required
         />
-      <button className="submitButton">Добавь и точно выполнишь</button>
+      <button 
+      className="submitButton"
+      onClick={handleClick}>
+        Добавь и точно выполнишь
+      </button>
     </form>
   )
 }
