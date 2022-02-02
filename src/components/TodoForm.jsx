@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import { nanoid } from 'nanoid';
 
 function TodoForm(props) {
   //стейт для инпута
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(props.edit ? props.edit.value : '');
+  const inputRef = useRef(null);
 
   //колбэк при клике на кнопку
   const handleClick = e => {
@@ -16,6 +17,10 @@ function TodoForm(props) {
     setInput('');
   }
 
+  useEffect(() => {
+    inputRef.current.focus();
+  })
+
   //колбэк при изменении в инпуте
   const handleChange = e => {
     setInput(e.target.value);
@@ -27,17 +32,26 @@ function TodoForm(props) {
         type="text" 
         value={input} 
         name="input-text"
-        className={input}
+        className="input"
         placeholder="Напишите задачу"
         onChange={handleChange}
         pattern="[a-zA-Z0-9]+"
+        ref={inputRef}
         required
         />
+        {!props.edit ? (
+        <button 
+      className="submitButton"
+      onClick={handleClick}>
+        Добавить
+      </button>) 
+      :       
       <button 
       className="submitButton"
       onClick={handleClick}>
-        Добавь и точно выполнишь
-      </button>
+        Изменить
+      </button>}
+
     </form>
   )
 }

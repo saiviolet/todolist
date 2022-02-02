@@ -32,7 +32,7 @@ function TodoList() {
   };
 
   return (
-    <div>
+    <>
       <h1>Что хотите сегодня сделать?</h1>
       <TodoForm onSubmit={addNewTodo}/>
       <Todo 
@@ -40,7 +40,7 @@ function TodoList() {
       completeTodo = {completeTodo} 
       removeTodo = {removeTodo}
       updateTodo = {updateTodo}/>
-    </div>
+    </>
   )
 }
 

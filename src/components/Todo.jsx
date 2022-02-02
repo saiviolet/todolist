@@ -21,7 +21,7 @@ function Todo({todos, completeTodo, removeTodo, updateTodo}) {
 
 if (edit.id) return <TodoForm edit={edit} onSubmit={submitUpdateTodo} />
 
-  return todos.map((todo, index) => {
+  return todos.map(todo => {
     return (<ul 
     className={todo.isComplete ? "todo-row complete" : "todo-row"}
     key = {nanoid(5)}>
