@@ -12,6 +12,10 @@ function TodoList() {
     setTodos(newTodo);
   }
 
+  const updateTodo = (id, newValue) => {
+    setTodos(old => old.map(oldTodo => (oldTodo.id === id ? newValue : oldTodo)));
+  };
+
   const completeTodo = id => {
     let updatedTodos = todos.map(todo => {
       if (todo.id === id) {
@@ -24,9 +28,7 @@ function TodoList() {
 
   const removeTodo = id => {
     const removedArr = [...todos].filter(todo => todo.id !== id);
-
     setTodos(removedArr);
-    console.dir(removedArr);
   };
 
   return (
@@ -36,7 +38,8 @@ function TodoList() {
       <Todo 
       todos = {todos}
       completeTodo = {completeTodo} 
-      removeTodo = {removeTodo}/>
+      removeTodo = {removeTodo}
+      updateTodo = {updateTodo}/>
     </div>
   )
 }
